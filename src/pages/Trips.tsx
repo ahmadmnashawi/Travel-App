@@ -54,7 +54,11 @@ const TripsPage = () => {
         console.log("Received from backend:", data.trips);
         setTrips(data.trips); // نعبي الـ state بالبيانات من الباك
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        // بدون باك إند (مثل نسخة العرض على GitHub Pages) نعرض البيانات التجريبية
+        console.error(err);
+        setTrips(mockTrips);
+      });
   }, []);
   const destinations = [
     "الكل",
